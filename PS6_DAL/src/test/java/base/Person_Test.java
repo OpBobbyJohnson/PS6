@@ -6,7 +6,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,12 +15,11 @@ import org.junit.Test;
 import domain.PersonDomainModel;
 
 public class Person_Test {
-	
 	static PersonDomainModel person1 = new PersonDomainModel();
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		//This is me :)
+		person1.getPeronID();
 		person1.setFirstName("Dylan");
 		person1.setLastName("Martin");
 		person1.setCity("Newark DE");
@@ -30,10 +28,13 @@ public class Person_Test {
 		person1.setStreet("804 North Country Club Dr.");
 		
 	}
-	
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
 	@Test
 	public void AddPersonTest(){
 		PersonDAL.addPerson(person1);
+		assertEquals(person1.getFirstName(), "Dylan");
 	}
 	
 	@Test
@@ -44,17 +45,18 @@ public class Person_Test {
 	
 	@Test
 	public void UpdatePersonTest(){
+		String FirstName = person1.getFirstName();
 		person1.setFirstName("Dylan");
 		
 		PersonDAL.updatePerson(person1);
+		assertEquals("Dylan",FirstName);
 	}
 	
 	@Test
 	public void deletePersontest(){
-		PersonDAL.addPerson(person1);
+		PersonDAL.deletePerson(person1.getPeronID());
+		assertEquals(person1, null);
 	}
 
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
+	
 }
