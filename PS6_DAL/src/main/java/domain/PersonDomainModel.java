@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import util.LocalDateAdapter;
 
 public class PersonDomainModel {
-	private  UUID peronID;
+	private  UUID personID;
 	private  StringProperty firstName;
     private  StringProperty lastName;
     private  StringProperty street;
@@ -106,7 +106,7 @@ public class PersonDomainModel {
 	}
 
 	public void setPeronID(UUID peronID) {
-		this.peronID = peronID;
+		this.personID = personID;
 	}
 
 }

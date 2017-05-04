@@ -31,6 +31,7 @@ public class Person_Test {
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 	}
+	
 	@Test
 	public void AddPersonTest(){
 		PersonDAL.addPerson(person1);
